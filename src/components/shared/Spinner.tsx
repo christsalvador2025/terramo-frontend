@@ -26,7 +26,7 @@ export default function Spinner({ size = "md" }: SpinnerProps) {
 
 	const widthHeight = dimensionMap[size];
 
-	const spinnerSrc = "/assets/icons/spinner-fade-stagger-squares.svg"
+	const spinnerSrc = "/assets/icons/ripples.svg"
 		// theme === "dark"
 		// 	? "/assets/icons/loading-dark.svg"
 		// 	: "/assets/icons/loading-light.svg";

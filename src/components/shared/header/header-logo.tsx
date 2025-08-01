@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const HeaderLogo = () => {
   return (
-    <Link href="/" >
+    <Link href="/clients" >
       <Image 
       src={terramoLogo} 
       alt="Terramo Logo" 

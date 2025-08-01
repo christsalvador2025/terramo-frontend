@@ -45,7 +45,7 @@ const SuccessModal: React.FC<SuccessModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="relative w-full max-w-md rounded-lg bg-white p-6 shadow-xl">
+      <div className="relative w-full max-w-md rounded-lg bg-white p-[32px] shadow-xl">
         {/* Close button */}
         <button
           onClick={onClose}
@@ -77,16 +77,16 @@ const SuccessModal: React.FC<SuccessModalProps> = ({
           </p>
 
           {/* Action Buttons */}
-          <div className="flex justify-between gap-2">
+          <div className="flex justify-between gap-x-[24px] px-[32px]">
             <button
               onClick={onCreateAnother}
-              className="w-full rounded-md border border-teal-600 px-4 py-2 text-sm font-medium text-teal-600 hover:bg-teal-50 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2"
+              className="w-full rounded-md border border-teal-600 px-4 py-4 text-sm font-medium text-teal-600 hover:bg-teal-50 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 text-nowrap background-[#026770]"
             >
               Zur Kundenübersicht
             </button>
             <button
               onClick={onViewClient}
-              className="w-full rounded-md bg-teal-600 px-4 py-2 text-sm font-medium text-white hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2"
+              className="w-full rounded-md bg-teal-600 px-4 py-2 text-sm font-medium text-white hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 text-nowrap"
             >
               Zum Kunden
             </button>
@@ -121,7 +121,7 @@ const SuccessModal: React.FC<SuccessModalProps> = ({
 // --------------------------- MAIN COMPONENT -----------------------------------
 
 export const ClientForm: React.FC = () => {
-  const [showSuccessModal, setShowSuccessModal] = useState(true);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [submittedInvitationToken, setSubmittedInvitationToken] = useState<string>("");
 
   const form = useForm<TRegisterClientAdminSchema>({

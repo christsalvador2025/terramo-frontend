@@ -23,7 +23,7 @@ export function middleware(request: NextRequest) {
   // If the user is logged in and tries to access a public route (like login/register),
   // redirect them to the dashboard.
   if (isLoggedIn && publicRoutes.includes(path)) {
-    return NextResponse.redirect(new URL('/dashboard', request.url));
+    return NextResponse.redirect(new URL('/clients', request.url));
   }
 
   // Check if the current path starts with any of the protected routes.
