@@ -2,32 +2,66 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+body{
+    font-family: var(--font-lato);
+
+}
+.site-logo{
+    width: 229px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+
+.flex-row-center{
+    @apply flex flex-row items-center;
+}
+
+.flex-center {
+    @apply flex justify-center items-center
+}
+.flex-col-center{
+    @apply flex-col justify-center items-center
+}
+
+.flex-between {
+    @apply flex justify-between items-center;
+}
+
+
+@layer components {
+  .form-section {
+    @apply bg-white p-6 rounded-lg shadow-sm border border-gray-200;
+  }
+  
+  .form-section-title {
+    @apply text-lg font-semibold text-gray-900 mb-4;
+  }
+  
+  .form-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 gap-4;
+  }
+  
+  .form-actions {
+    @apply flex justify-end space-x-4 pt-6 border-t border-gray-200;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+/* Toast customization */
+.Toastify__toast-container {
+  @apply text-sm;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.Toastify__toast--success {
+  @apply bg-green-50 text-green-800;
+}
+
+.Toastify__toast--error {
+  @apply bg-red-50 text-red-800;
+}
+
+.Toastify__toast--info {
+  @apply bg-blue-50 text-blue-800;
+}
+
+.Toastify__toast--warning {
+  @apply bg-yellow-50 text-yellow-800;
 }
