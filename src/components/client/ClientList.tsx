@@ -1,10 +1,11 @@
 "use client";
-import { Container, Grid2 as Grid, Pagination, Stack } from "@mui/material";
+import { Button, Container, Grid2 as Grid, Pagination, Stack } from "@mui/material";
 import React, { useState } from "react";
 import TitleBar from "./title-bar/title-bar"; 
 import ClientCard from "./client-card";
 import { useGetAllClientsQuery } from "@/lib/redux/features/clients/_clientApiSlice";
 import Spinner from "../shared/Spinner";
+import Link from "next/link";
 
 // Interface for a single client object, matching your API response
 // Define the specific type for the invitation status object
@@ -65,9 +66,25 @@ const ClientsComponent = () => {
   // Use a more descriptive error message
   if (error || !data) {
     console.error('Error fetching clients:', error);
+    let error_msg = "An error occurred while fetching clients"
+    if (error?.status === 403 ){
+      error_msg = error?.data?.detail || "Unauthorized Access, Only for Terramo Admin."
+    }
     return (
-      <div className="flex-center pt-32">
-        An error occurred while fetching clients.
+      <div className="flex-center flex-col pt-32">
+        <h1 className="text-xl">{error_msg}</h1>
+        <Link href="/client-admin/dashboard" className="mt-4">
+
+          <Button
+            type="button"
+            style={{ background: "#026770", color: "#FFFF" }}
+            className="h4-semibold w-full"
+           
+          >
+            Go to Dashboard
+          </Button>
+        </Link>
+        
       </div>
     );
   }
