@@ -80,6 +80,13 @@ export default function AcceptInvitationPage({ params }: AcceptInvitationPagePro
           }
           break;
           
+        case 'email_verified':
+          // Already verified, login token sent
+          toast.success(message);
+          // Don't show the form, just show the message
+          setShowEmailForm(false);
+          break;
+          
         case 'accepted_and_for_verification':
           // Show email verification form
           setShowEmailForm(true);
@@ -120,10 +127,8 @@ export default function AcceptInvitationPage({ params }: AcceptInvitationPagePro
       } else {
         // Handle other response scenarios
         toast.success(response.message || "Email verified successfully");
-        console.log('Email verified successfully=>', response)
         if (response.redirect_url) {
-        //   router.push(response.redirect_url);
-        router.push("/client-admin/dashboard");
+          router.push(response.redirect_url);
         }
       }
       
@@ -237,7 +242,7 @@ export default function AcceptInvitationPage({ params }: AcceptInvitationPagePro
         )}
 
         {/* Alternative actions */}
-        {!showEmailForm && invitationStatus !== 'accepted_and_verified' && (
+        {!showEmailForm && invitationStatus !== 'accepted_and_verified' && invitationStatus !== 'email_verified' && (
           <Box sx={{ mt: 3, textAlign: 'center' }}>
             <Button
               variant="outlined"
@@ -245,6 +250,22 @@ export default function AcceptInvitationPage({ params }: AcceptInvitationPagePro
               disabled={isCheckingToken}
             >
               Retry Verification
+            </Button>
+          </Box>
+        )}
+
+        {/* Show message when already verified */}
+        {invitationStatus === 'email_verified' && (
+          <Box sx={{ mt: 3, textAlign: 'center' }}>
+            <Typography variant="body1" color="text.secondary">
+              Please check your email for the login link.
+            </Typography>
+            <Button
+              variant="text"
+              onClick={() => refetchToken()}
+              sx={{ mt: 2 }}
+            >
+              Did not receive the email? Click to resend
             </Button>
           </Box>
         )}

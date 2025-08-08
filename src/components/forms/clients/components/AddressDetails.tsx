@@ -292,7 +292,7 @@ export const AddressDetails: React.FC<AddressDetailsProps> = ({
     
     // Create the invitation link
     const baseUrl = window.location.origin;
-    const invitationLink = `${baseUrl}/client-admin/invite?token=${tokenToCopy}`;
+    const invitationLink = `${baseUrl}/client-admin/accept-invitation/${tokenToCopy}`;
     
     try {
       await navigator.clipboard.writeText(invitationLink);
@@ -434,7 +434,7 @@ export const AddressDetails: React.FC<AddressDetailsProps> = ({
               <div className="flex-1">
                 <Input
                   label="Invitation Link"
-                  value={invitationToken ? `${window.location.origin}/client-admin/invite?token=${invitationToken}` : ""}
+                  value={invitationToken ? `${window.location.origin}/client-admin/accept-invitation/${invitationToken}` : ""}
                   readOnly
                   placeholder="Invitation link will be generated..."
                   className="bg-white"

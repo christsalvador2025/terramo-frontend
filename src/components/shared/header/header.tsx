@@ -59,7 +59,10 @@ export default function Header() {
                 </Link>
               )}
 
-              
+              <Link
+                  href="/login"
+                  
+                >
                 <Button
                   style={{ background: "none", color: "#026770", textTransform: "none" }}
                   startIcon={isAuthenticated ? <LogoutIcon /> : <LoginIcon />}
@@ -67,7 +70,7 @@ export default function Header() {
                 >
                   {isAuthenticated ? "Logout" : "Login"}
                 </Button>
-              
+              </Link>
             </Stack>
 
             {/* <Button

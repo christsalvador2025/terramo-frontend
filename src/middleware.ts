@@ -10,6 +10,7 @@ const protectedRoutes = [
   '/profile',
   '/clients',
   '/clients/:path*', 
+  '/client-admin/dashboard'
 ];
 
 const publicRoutes = ['/login', '/register', '/']; // Routes accessible without login

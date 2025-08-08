@@ -1,25 +1,40 @@
 
-import Header from "@/components/shared/header/header";
-import Navbar from "@/components/shared/navbar/Navbar";
-import React from "react";
+import ClientDashboardLayout from '@/components/client/dashboard/DashboardMainLayout'
+import React from 'react'
 
-interface LayoutProps {
-    children: React.ReactNode;
+export default function Layout({ children }: { children: React.ReactNode }) {
+  return (
+    <ClientDashboardLayout>
+      {children}
+    </ClientDashboardLayout>
+  )
 }
 
-export default function layout({ children }: LayoutProps) {
-    return (
-        <>
-        <main  >
-            
-            <div className="flex-center">
-                 {/* flex-col px-4 pb-6 pt-24 sm:px-6 lg:px-8 lg:pt-32 */}
-                <section className="flex min-h-screen">
-                    <div>{children}</div>
-                </section>
-            
-            </div>
-        </main>
-        </>
-    );
-}
+// import React, { Suspense } from 'react';
+// import ClientDashboardProvider from './components/ClientDashboardProvider';
+// import DashboardSidebar from './components/DashboardSidebar';
+// import DashboardHeader from './components/DashboardHeader';
+
+// export default function ClientDashboardLayout({
+//   children,
+//   params,
+// }: {
+//   children: React.ReactNode;
+//   params: { id: string };
+// }) {
+//   return (
+//     <ClientDashboardProvider clientId={params.id}>
+//       <div className="flex h-screen bg-gray-50">
+//         <DashboardSidebar clientId={params.id} />
+//         <div className="flex flex-1 flex-col overflow-hidden">
+//           <DashboardHeader />
+//           <main className="flex-1 overflow-y-auto p-6">
+//             <Suspense fallback={<div>Loading...</div>}>
+//               {children}
+//             </Suspense>
+//           </main>
+//         </div>
+//       </div>
+//     </ClientDashboardProvider>
+//   );
+// }

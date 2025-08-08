@@ -35,7 +35,7 @@ const SuccessModal: React.FC<SuccessModalProps> = ({
   const handleCopyInvitationLink = () => {
     if (invitationToken) {
       const baseUrl = window.location.origin;
-      const invitationLink = `${baseUrl}/invite?token=${invitationToken}`;
+      const invitationLink = `${baseUrl}/client-admin/accept-invitation/${invitationToken}`;
       navigator.clipboard.writeText(invitationLink);
       toast.success("Einladungslink kopiert!");
     } else {
